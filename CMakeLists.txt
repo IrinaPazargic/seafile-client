@@ -53,7 +53,7 @@ SET(moc_headers
   src/settings-mgr.h
   src/traynotificationwidget.h
   src/traynotificationmanager.h
-  src/seahub-messages-monitor.h
+  # src/seahub-messages-monitor.h
   src/api/api-client.h
   src/api/api-request.h
   src/api/requests.h
@@ -76,6 +76,12 @@ SET(moc_headers
   src/ui/server-status-dialog.h
   src/ui/init-vdrive-dialog.h
   src/ui/uninstall-helper-dialog.h
+  src/ui/account-view.h
+  src/ui/seafile-tab-widget.h
+  src/ui/tab-view.h
+  src/ui/repos-tab.h
+  src/ui/starred-files-tab.h
+  src/ui/activities-tab.h
   third_party/QtAwesome/QtAwesome.h
   ${platform_specific_moc_headers}
 )
@@ -97,6 +103,7 @@ SET(ui_files
   ui/server-status-dialog.ui
   ui/init-vdrive-dialog.ui
   ui/uninstall-helper-dialog.ui
+  ui/account-view.ui
   ${platform_specific_ui_files}
 )
 
@@ -155,12 +162,13 @@ SET(seafile_client_sources
   src/settings-mgr.cpp
   src/traynotificationwidget.cpp
   src/traynotificationmanager.cpp
-  src/seahub-messages-monitor.cpp
+  # src/seahub-messages-monitor.cpp
   src/api/api-client.cpp
   src/api/api-request.cpp
   src/api/api-error.cpp
   src/api/requests.cpp
   src/api/server-repo.cpp
+  src/api/starred-file.cpp
   src/rpc/rpc-client.cpp
   src/rpc/local-repo.cpp
   src/rpc/clone-task.cpp
@@ -189,6 +197,12 @@ SET(seafile_client_sources
   src/ui/init-vdrive-dialog.cpp
   src/ui/uninstall-helper-dialog.cpp
   src/ui/proxy-style.cpp
+  src/ui/account-view.cpp
+  src/ui/seafile-tab-widget.cpp
+  src/ui/tab-view.cpp
+  src/ui/repos-tab.cpp
+  src/ui/starred-files-tab.cpp
+  src/ui/activities-tab.cpp
   third_party/QtAwesome/QtAwesome.cpp
   ${platform_specific_sources}
 )

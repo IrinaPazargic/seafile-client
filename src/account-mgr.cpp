@@ -87,7 +87,7 @@ int AccountManager::saveAccount(const Account& account)
     sql = sql.arg(url).arg(account.username).arg(account.token).arg(QString::number(timestamp));
     sqlite_query_exec (db, toCStr(sql));
 
-    emit accountAdded(account);
+    emit accountsChanged();
 
     return 0;
 }
@@ -103,7 +103,7 @@ int AccountManager::removeAccount(const Account& account)
     accounts_.erase(std::remove(accounts_.begin(), accounts_.end(), account),
                     accounts_.end());
 
-    emit accountRemoved(account);
+    emit accountsChanged();
 
     return 0;
 }
@@ -120,7 +120,7 @@ void AccountManager::updateAccountLastVisited(const Account& account)
     sqlite_query_exec (db, toCStr(sql));
 }
 
-bool AccountManager::hasAccount(const QUrl& url, const QString& username)
+bool AccountManager::accountExists(const QUrl& url, const QString& username)
 {
     int i, n = accounts_.size();
     for (i = 0; i < n; i++) {
@@ -130,4 +130,16 @@ bool AccountManager::hasAccount(const QUrl& url, const QString& username)
     }
 
     return false;
+}
+
+bool AccountManager::setCurrentAccount(const Account& account)
+{
+    if (account == currentAccount()) {
+        return false;
+    }
+
+    // Would emit "accountsChanged" signal
+    saveAccount(account);
+
+    return true;
 }

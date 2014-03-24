@@ -141,7 +141,7 @@ bool LoginDialog::validateInputs()
     password_ = mPassword->text();
     computer_name_ = mComputerName->text();
 
-    if (seafApplet->accountManager()->hasAccount(url_, username_)) {
+    if (seafApplet->accountManager()->accountExists(url_, username_)) {
         showWarning(tr("This account already exists"));
         return false;
     }
